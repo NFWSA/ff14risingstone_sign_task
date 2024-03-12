@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     input_comment_content: str = '<p><span class="at-emo">[emo6]</span>&nbsp;</p>'
     input_like_post_id: int = 8
     input_comment_post_id: int = 8
-    input_check_house_remain: bool = False
+    input_check_house_remain: bool = True
 
 
 class SealType(IntEnum):
@@ -93,24 +93,24 @@ def main():
     logging.info("开始签到")
     sign_in()
     time.sleep(3)
-    do_seal(SealType.SIGN)
+    # do_seal(SealType.SIGN)
 
-    logging.info("开始点赞")
-    counter = 0
-    for _ in range(10):
-        time.sleep(3)
-        r = like()
-        if r.json()["data"] == 1:
-            counter += 1
-            logging.info(f"第{counter}次点赞结束")
+    # logging.info("开始点赞")
+    # counter = 0
+    # for _ in range(10):
+    #     time.sleep(3)
+    #     r = like()
+    #     if r.json()["data"] == 1:
+    #         counter += 1
+    #         logging.info(f"第{counter}次点赞结束")
 
-    time.sleep(3)
-    do_seal(SealType.LIKE)
+    # time.sleep(3)
+    # do_seal(SealType.LIKE)
 
-    logging.info("开始评论")
-    time.sleep(3)
-    comment()
-    do_seal(SealType.COMMENT)
+    # logging.info("开始评论")
+    # time.sleep(3)
+    # comment()
+    # do_seal(SealType.COMMENT)
 
     logging.info("任务完成")
 
