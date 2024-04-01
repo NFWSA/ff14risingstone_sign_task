@@ -80,7 +80,7 @@ def comment():
     logging.info(r.text)
 
 
-def get_user_info():
+def get_user_infos():
     r = client.get(
         f"{settings.input_base_url}/api/home/userInfo/getUserInfo?page=1",
         headers={"Content-Type": "application/x-www-form-urlencoded"},
@@ -116,7 +116,7 @@ def main():
 
     if settings.input_check_house_remain:
         logging.info("开始检查房屋拆除倒计时")
-        user_info: dict[str, Any] = get_user_info()
+        user_info: dict[str, Any] = get_user_infos()[0]
         house_remain_day = (
             user_info.get("data", {}).get("characterDetail", {}).get("house_remain_day")
         )
